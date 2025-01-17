@@ -11,13 +11,14 @@ public class PendulumSimulator {
         return new Ball(newThetaOf(ball), newOmegaOf(ball), ball.g(), ball.L(), newXOf(ball), newYOf(ball), ball.r(), ball.damping());
     }
 
+
+
     private double newYOf(Ball ball) {
-        return 100*(-ball.L()*Math.cos(ball.theta()))+100;
+        return 100*(-ball.L()*Math.cos(ball.theta()));
     }
 
     private double newXOf(Ball ball) {
-        return 100*ball.L()*Math.sin(ball.theta())+300; //Multiplico para adaptarlo a un tamaño mas grande en la pantalla
-                                                        //Y sumo para desplazarlo a una posicion en la pantalla determinada
+        return 100*ball.L()*Math.sin(ball.theta()); //Multiplico para adaptarlo a un tamaño mas grande en la pantalla
     }
 
     private double newOmegaOf(Ball ball) {
@@ -35,5 +36,6 @@ public class PendulumSimulator {
         while (theta < -Math.PI) theta += 2 * Math.PI;
         return theta;
     }
+
 
 }

@@ -11,10 +11,10 @@ public class MainFrame extends JFrame {
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.add(createImageDisplay());
+        this.add(createImageDisplayBall());
     }
 
-    private Component createImageDisplay() {
+    private Component createImageDisplayBall() {
         SwingBallDisplay display = new SwingBallDisplay();
         this.ballDisplay = display;
         return display;

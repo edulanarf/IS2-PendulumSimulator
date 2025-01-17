@@ -15,7 +15,7 @@ public class BallPresenter {
     }
 
     public void execute(){
-        new Timer().schedule(simulateTask(), 10, 10);
+        new Timer().schedule(simulateTask(), 1, 1);
     }
 
     private TimerTask simulateTask() {
@@ -31,6 +31,6 @@ public class BallPresenter {
         this.ballDisplay.clear();
         ball = pendulumSimulator.simulate(this.ball);
         this.ballDisplay.drawCircle((int) ball.r(),(int) ball.x(), (int) ball.y());
-        System.out.println(ball);
+        System.out.println("Theta: "+ball.theta()+ " Omega: "+ball.omega());
     }
 }

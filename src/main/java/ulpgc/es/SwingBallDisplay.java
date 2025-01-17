@@ -31,13 +31,16 @@ public class SwingBallDisplay extends JPanel implements BallDisplay {
 
         synchronized (paints) {
             for (Paint paint : paints) {
-                int centerX = paint.x() - paint.r(); // Centrar en X
-                int centerY = this.getHeight()/2 - paint.y() - paint.r();
+                int centerX = this.getWidth() / 2;
+                int centerY = this.getHeight() / 2;
+                int xPosition = centerX - paint.x() - paint.r();
+                int yPosition = centerY - paint.y() - paint.r();
                 int diameter = paint.r() * 2;
-                g.setColor(Color.RED);
-                g.fillOval(centerX, centerY, diameter, diameter);
-                g.drawOval(centerX, centerY, diameter, diameter);
                 g.setColor(Color.BLACK);
+                g.drawLine(centerX, centerY , xPosition+paint.r(), yPosition+paint.r());
+                g.setColor(Color.RED);
+                g.fillOval(xPosition, yPosition, diameter, diameter);
+                g.drawOval(xPosition, yPosition, diameter, diameter);
             }
         }
     }

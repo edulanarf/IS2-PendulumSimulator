@@ -2,9 +2,9 @@ package ulpgc.es;
 
 public class Main {
     public static void main(String[] args) {
-        Ball ball = new Ball(-Math.PI / 2, 0.0, 9.81, 1.5,0,0, 10,1);
+        Ball ball = new Ball(Math.PI / 6, 0, 9.81, 1.5,0,0, 10,1.0);
         MainFrame frame = new MainFrame();
-        new BallPresenter(ball,frame.getBallDisplay(), new PendulumSimulator(0.01)).execute();
+        new BallPresenter(ball,frame.getBallDisplay(),new PendulumSimulator(0.001)).execute();
         frame.setVisible(true);
     }
 }
