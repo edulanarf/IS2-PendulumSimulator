@@ -9,7 +9,7 @@ public class BallPresenter {
     private final PendulumSimulator pendulumSimulator;
 
     public BallPresenter(Ball ball, BallDisplay ballDisplay, PendulumSimulator pendulumSimulator) {
-        this.ball = new Ball(ball.theta(),ball.omega(),ball.g(), ball.L());
+        this.ball = new Ball(ball.theta(),ball.omega(),ball.g(), ball.L(), ball.x(),ball.y());
         this.ballDisplay = ballDisplay;
         this.pendulumSimulator = pendulumSimulator;
     }
@@ -30,6 +30,7 @@ public class BallPresenter {
     public void simulate(){
         this.ballDisplay.clear();
         ball = pendulumSimulator.simulate(this.ball);
+        //this.ballDisplay.drawCircle((int) ball.x(),(int) ball.h(), (int) ball.x());
         System.out.println(ball);
     }
 }

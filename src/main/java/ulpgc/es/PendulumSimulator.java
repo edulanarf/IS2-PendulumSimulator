@@ -9,9 +9,17 @@ public class PendulumSimulator {
 
     public Ball simulate(Ball ball){
         return willStop(ball) ?
-                new Ball(newThetaOf(ball), newOmegaAfterStopOf(ball), ball.g(), ball.L()):
-                new Ball(newThetaOf(ball), newOmegaOf(ball), ball.g(), ball.L());
+                new Ball(newThetaOf(ball), newOmegaAfterStopOf(ball), ball.g(), ball.L(),ball.x(),ball.y()):
+                new Ball(newThetaOf(ball), newOmegaOf(ball), ball.g(), ball.L(), newXOf(ball), newYOf(ball));
 
+    }
+
+    private double newYOf(Ball ball) {
+        return -ball.L()*Math.cos(ball.theta());
+    }
+
+    private double newXOf(Ball ball) {
+        return ball.L()*Math.sin(ball.theta());
     }
 
     private double newOmegaAfterStopOf(Ball ball) {
