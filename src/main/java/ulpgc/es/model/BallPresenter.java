@@ -1,4 +1,6 @@
-package ulpgc.es;
+package ulpgc.es.model;
+
+import ulpgc.es.swing.BallDisplay;
 
 import java.util.Timer;
 import java.util.TimerTask;

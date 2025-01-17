@@ -1,4 +1,4 @@
-package ulpgc.es;
+package ulpgc.es.model;
 
 public class PendulumSimulator {
     private final double dt;
