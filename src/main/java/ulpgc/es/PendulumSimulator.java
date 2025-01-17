@@ -8,30 +8,22 @@ public class PendulumSimulator {
     }
 
     public Ball simulate(Ball ball){
-        return willStop(ball) ?
-                new Ball(newThetaOf(ball), newOmegaAfterStopOf(ball), ball.g(), ball.L(),ball.x(),ball.y()):
-                new Ball(newThetaOf(ball), newOmegaOf(ball), ball.g(), ball.L(), newXOf(ball), newYOf(ball));
-
+        return new Ball(newThetaOf(ball), newOmegaOf(ball), ball.g(), ball.L(), newXOf(ball), newYOf(ball), ball.r(), ball.damping());
     }
 
     private double newYOf(Ball ball) {
-        return -ball.L()*Math.cos(ball.theta());
+        return 100*(-ball.L()*Math.cos(ball.theta()))+100;
     }
 
     private double newXOf(Ball ball) {
-        return ball.L()*Math.sin(ball.theta());
-    }
-
-    private double newOmegaAfterStopOf(Ball ball) {
-        //double damping = 0.80;
-        return -ball.omega();
+        return 100*ball.L()*Math.sin(ball.theta())+300; //Multiplico para adaptarlo a un tamaño mas grande en la pantalla
+                                                        //Y sumo para desplazarlo a una posicion en la pantalla determinada
     }
 
     private double newOmegaOf(Ball ball) {
-        //double damping = 0.80;
         double acceleration = -(ball.g() / ball.L()) * Math.sin(ball.theta());
-        System.out.println("Aceleracion:"+ acceleration);
-        return ball.omega() + acceleration * dt;
+        return ball.damping()*ball.omega() + acceleration * dt;
+
     }
 
     private double newThetaOf(Ball ball) {
@@ -44,10 +36,4 @@ public class PendulumSimulator {
         return theta;
     }
 
-    private boolean willStop(Ball ball) {
-        if (Math.abs(ball.omega()) < 0.010 && (Math.abs(ball.theta()) > Math.PI - 0.1 && Math.abs(ball.theta()) < Math.PI + 0.1)) {
-            return true;  // El péndulo ha llegado a un extremo y rebota
-        }
-        return false;
-    }
 }
